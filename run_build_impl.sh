@@ -1,5 +1,7 @@
 #!/bin/bash
 export PATH=/usr/local/bin/:$PATH
+export LD_LIBRARY_PATH=/opt/ros/indigo/lib/x86_64-linux-gnu:/opt/ros/indigo/lib
+export SHELL=/bin/bash
 
 source /opt/ros/indigo/setup.sh
 # Get the directory of this script.
@@ -141,7 +143,7 @@ then
 	# Make a separate workspace for the deps, so we can exclude them from cppcheck etc.
 	mkdir -p $WORKSPACE/$DEPS
 	cd $WORKSPACE/$DEPS	
-	echo "- git: {local-name: $WORKSPACE/$DEPS/aslam_install, uri: 'git@github.com:ethz-asl/aslam_install.git'}" | wstool  merge -t $WORKSPACE/src -
+	echo "- git: {local-name: $WORKSPACE/$DEPS/aslam_install, uri: 'git@github.com:skybotix/scripts.git'}" | wstool  merge -t $WORKSPACE/src -
 	echo "- git: {local-name: $WORKSPACE/$DEPS/catkin_simple, uri: '${CATKIN_SIMPLE_URL}'}" | wstool  merge -t $WORKSPACE/src -
 	wstool update -t $WORKSPACE/src -j8
 
